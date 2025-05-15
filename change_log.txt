@@ -1,0 +1,11 @@
+### [2025-05-15] features branch
+- UPDATED: paste_with_peace/scanner.py
+    calculate_entropy(s: str) -> float:
+    is_potential_secret(text: str) -> Tuple[bool, str]:
+- UPDATED: tests/test_scanner.py
+    14 tests implemented and passed
+- Implemented regexes for many common keys
+- Added Shannon entropy fallback if no pattern matches
+- Confirmed 14 tests. Most tests that initially failed were written wrong. 
+    generic_api_key condition in scanner.py was adjusted after test failure, successfully
+- 
