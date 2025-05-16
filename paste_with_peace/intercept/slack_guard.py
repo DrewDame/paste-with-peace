@@ -3,11 +3,28 @@ import threading
 import pyperclip
 import keyboard
 import pygetwindow as gw
+import pyautogui
+from paste_with_peace.config import load_config
 from paste_with_peace import scanner, notifier
 
 # currently only works on windows
 
+pyautogui.PAUSE = 0
+config = load_config()
 enter_blocked = False
+
+def delete_pasted_content():
+    pasted_text = pyperclip.paste()
+    length = len(pasted_text)
+
+    # Add a small buffer in case Slack auto-formats (like with spaces or quotes)
+    # num_presses = min(length + 3, 100)  # Avoid going crazy
+    num_presses = length
+
+    time.sleep(0.1)
+    for _ in range(num_presses):
+        pyautogui.press('backspace')
+        # time.sleep(0.01)
 
 def is_slack_active_window() -> bool:
     """Returns true if Slack is the active window"""
@@ -55,6 +72,9 @@ def on_v(e):
             notifier.alert_secret_detected(label, text)
             block_enter_temporarily()
             unblock_enter_after_delay(delay=2.0)
+        if config.get('clear_after_paste', False):
+
+            delete_pasted_content()
 
 def run_slack_guard():
     """Detects that user just tried to paste sensitive information and prevents them from hitting enter key"""

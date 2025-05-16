@@ -49,3 +49,18 @@ You can run Paste with Peace by double-clicking the `PasteWithPeace.exe` file.
 No Python installation required.
 
 To configure options, edit the `config.json` in the same folder.
+
+### 🧽 Auto-Delete Pasted Secret (Slack)
+
+When you paste a secret into the Slack Desktop app using `Ctrl+V`, Paste with Peace can automatically delete just the pasted portion from the input field.
+
+#### Behavior:
+- Scans the clipboard after `Ctrl+V` in Slack
+- If a secret is detected:
+  - Shows a desktop warning
+  - Blocks the `Enter` key for 2 seconds
+  - Deletes only the pasted content by simulating `Backspace` presses
+
+#### Configurable in `config.json`:
+```json
+"clear_after_paste": true

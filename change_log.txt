@@ -96,9 +96,20 @@
     run_slack_guard():
 - UPDATED: main.py
     now runs run_slack_guard() from slack_guard.py
-Goal: Prevent Slack user from sending sensitive information they just pasted
-Plan: Detect when user uses ctrl+v to paste sensitive information,
+- Goal: Prevent Slack user from sending sensitive information they just pasted
+- Plan: Detect when user uses ctrl+v to paste sensitive information,
     then block their enter key for 2 seconds
 - Confirmed function by pasting example api key into Slack message box and
   being unable to hit enter for 2 seconds after
+- main branch was merged to state of features branch and pushed to remote repo
+
+### [2025-05-16] features branch -> main branch
+- UPDATED: config.json
+- UPDATED: paste_with_peace/intercept/slack_guard.py
+    delete_pasted_content():
+    on_v(e):
+- Goal: Auto delete the key after a user pastes it
+- Plan: Use pyautogui to imitate keypresses and repetitively backspace until the key is gone
+- Confirmed function by pasting example api key into Slack message box and
+  watching the key be deleted instantly
 - main branch was merged to state of features branch and pushed to remote repo

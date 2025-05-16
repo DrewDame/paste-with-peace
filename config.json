@@ -3,5 +3,6 @@
   "log_file_path": "logs/detection_log.txt",
   "popup_timeout": 5,
   "redact_mode": "masked",
-  "allow_user_quit": true
+  "allow_user_quit": true,
+  "clear_after_paste": true
 }
