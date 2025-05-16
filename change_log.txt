@@ -83,3 +83,4 @@
 - Plan: Use PyInstaller to create exe file
 - Confirmed function by opening the exe file on my own machine and
   verifying that it was running in the background
+- main branch was merged to state of features branch and pushed to remote repo
