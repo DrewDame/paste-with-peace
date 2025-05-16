@@ -12,3 +12,10 @@
 - ✅ Tested with unit tests and mock notifier
 
 - ✅ Desktop notification includes type and recommended action
+
+### Logging
+
+Detected secrets are logged to `detection_log.txt` with:
+- Timestamp
+- Type of secret (e.g., AWS Key, OpenAI Key)
+- A truncated preview (first 40 characters)

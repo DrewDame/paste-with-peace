@@ -33,3 +33,13 @@
 - Confirmed function with manual testing by running main.py and copying an
   example key to my clipboard
 - main branch was merged to state of features branch and pushed to remote repo
+
+### [2025-05-15] features branch -> main branch
+- UPDATED: paste_with_peace/notifier.py
+    def log_detection(label: str, text: str, log_file="logs/detection_log.txt", redact_mode="masked"):
+    alert_secret_detected(label: str, _text: str):
+- Goal: Add functionality to create logs in logs/detection_log.txt every time an alert is sent
+- Plan: Give multiple options that can be configured later to ensure the keys themselves are not saved
+- Confirmed function with manual testing by running main.py and copying an
+  example key to my clipboard
+- main branch was merged to state of features branch and pushed to remote repo
