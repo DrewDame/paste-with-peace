@@ -6,3 +6,15 @@
 2025-05-15T23:18:29 | No pattern match, but High Shannon Entropy found | Excep**********own  
 2025-05-15T23:24:19 | No pattern match, but High Shannon Entropy found | Excep**********own  
 2025-05-15T23:25:11 | No pattern match, but High Shannon Entropy found | Excep**********own  
+2025-05-16T14:10:16 | OpenAI Key | sk-ab**********67890
+2025-05-16T14:10:22 | OpenAI Key | sk-ab**********67890
+2025-05-16T14:10:26 | OpenAI Key | sk-ab**********67890
+2025-05-16T14:10:30 | OpenAI Key | sk-ab**********67890
+2025-05-16T14:10:43 | OpenAI Key | sk-ab**********67890
+2025-05-16T14:10:44 | OpenAI Key | sk-ab**********67890
+2025-05-16T14:36:16 | OpenAI Key | sk-ab**********67890
+2025-05-16T14:36:36 | OpenAI Key | sk-ab**********67890
+2025-05-16T14:36:45 | OpenAI Key | sk-ab**********67890
+2025-05-16T14:39:59 | OpenAI Key | sk-ab**********67890
+2025-05-16T14:39:59 | OpenAI Key | sk-ab**********67890
+2025-05-16T14:40:03 | OpenAI Key | sk-ab**********67890

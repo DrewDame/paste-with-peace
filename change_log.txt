@@ -84,3 +84,21 @@
 - Confirmed function by opening the exe file on my own machine and
   verifying that it was running in the background
 - main branch was merged to state of features branch and pushed to remote repo
+
+### [2025-05-16] features branch -> main branch
+- UPDATED: paste_with_peace/intercept/slack_guard.py
+    is_slack_active_window() -> bool:
+    clipboard_has_secret() -> tuple[bool, str, str]:
+    block_enter_temporarily():
+    unblock_enter():
+    unblock_enter_after_delay(delay=2.0):
+    on_v(e):
+    run_slack_guard():
+- UPDATED: main.py
+    now runs run_slack_guard() from slack_guard.py
+Goal: Prevent Slack user from sending sensitive information they just pasted
+Plan: Detect when user uses ctrl+v to paste sensitive information,
+    then block their enter key for 2 seconds
+- Confirmed function by pasting example api key into Slack message box and
+  being unable to hit enter for 2 seconds after
+- main branch was merged to state of features branch and pushed to remote repo

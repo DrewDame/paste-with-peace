@@ -2,3 +2,6 @@ pyperclip
 plyer
 pystray
 Pillow
+keyboard
+pygetwindow
+pywin32
