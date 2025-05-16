@@ -64,3 +64,14 @@ When you paste a secret into the Slack Desktop app using `Ctrl+V`, Paste with Pe
 #### Configurable in `config.json`:
 ```json
 "clear_after_paste": true
+```
+
+### 🛠 Settings UI
+
+Paste with Peace includes a modern graphical interface for editing your configuration.
+
+To launch the UI:
+
+```bash
+python -m paste_with_peace.settings_ui
+```

@@ -6,3 +6,4 @@ keyboard
 pygetwindow
 pywin32
 pyautogui
+customtkinter
