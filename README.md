@@ -19,3 +19,15 @@ Detected secrets are logged to `detection_log.txt` with:
 - Timestamp
 - Type of secret (e.g., AWS Key, OpenAI Key)
 - A truncated preview (first 40 characters)
+
+### Configuration
+
+You can customize the app with `config.json` in the root directory.
+
+Example:
+```json
+{
+  "logging_enabled": true,
+  "log_file_path": "detection_log.txt",
+  "popup_timeout": 6
+}
