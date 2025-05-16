@@ -124,3 +124,13 @@
 - Confirmed function by running the settings_ui.py file and observing
   that the GUI opened with a sidebar
 - main branch was merged to state of features branch and pushed to remote repo
+
+### [2025-05-16] features branch -> main branch
+- UPDATED: paste_with_peace/settings_ui.py
+    load_config():
+    show_page(self, name):
+- Goal: Build the settings page so that users can change the settings
+- Plan: Use custom tkinter to create a settings page with dropdowns and input fields
+- Confirmed function by running the settings_ui.py file and observing
+  that the GUI opened on the Settings page with options to change settings
+- main branch was merged to state of features branch and pushed to remote repo
