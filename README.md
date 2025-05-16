@@ -31,3 +31,11 @@ Example:
   "log_file_path": "detection_log.txt",
   "popup_timeout": 6
 }
+
+### Tray Options
+
+The tray icon shows system status and optional actions.
+
+To disable the ability for users to quit the monitor:
+```json
+"allow_user_quit": false

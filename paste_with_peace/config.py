@@ -5,7 +5,8 @@ DEFAULT_CONFIG = {
   "logging_enabled": True,
   "log_file_path": "logs/detection_log.txt",
   "popup_timeout": 5,
-  "redact_mode": "masked"
+  "redact_mode": "masked",
+  "allow_user_quit": False,
 }
 
 def load_config(path="config.json"):

@@ -2,5 +2,6 @@
   "logging_enabled": true,
   "log_file_path": "logs/detection_log.txt",
   "popup_timeout": 5,
-  "redact_mode": "masked"
+  "redact_mode": "masked",
+  "allow_user_quit": true
 }

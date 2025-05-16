@@ -58,3 +58,20 @@
   first to true, then to false. logs/detection_log.txt was only 
   updated when "logging_enabled" was set to true
 - main branch was merged to state of features branch and pushed to remote repo
+
+### [2025-05-15] features branch -> main branch
+- UPDATED: config.json
+- UPDATED: paste_with_peace/tray.py
+    create_icon():
+    run_tray(on_quit_callback=None):
+- UPDATED: paste_with_peace/config.py
+- UPDATED: main.py
+    added threading so that the clipboard tracker and system tray icon
+    can run simultaneously
+- Goal: Add the ability to quit via system tray icon
+- Plan: Add tray icon functionality to tray.py and call it in main.py. Add user
+  ability/inability to quit to the config settings
+- Confirmed function with manual testing by running main.py with
+  config.json "allow_user_quit" first to false, then to true. "Quit" option
+  was only visible when config allowed it to be
+- main branch was merged to state of features branch and pushed to remote repo
