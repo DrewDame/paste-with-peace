@@ -75,3 +75,11 @@
   config.json "allow_user_quit" first to false, then to true. "Quit" option
   was only visible when config allowed it to be
 - main branch was merged to state of features branch and pushed to remote repo
+
+### [2025-05-16] features branch -> main branch
+- UPDATED: build
+- UPDATED dist
+- Goal: Create PasteWithPeace.exe so that users can download the exe and run
+- Plan: Use PyInstaller to create exe file
+- Confirmed function by opening the exe file on my own machine and
+  verifying that it was running in the background

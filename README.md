@@ -31,6 +31,7 @@ Example:
   "log_file_path": "detection_log.txt",
   "popup_timeout": 6
 }
+```
 
 ### Tray Options
 
@@ -39,3 +40,12 @@ The tray icon shows system status and optional actions.
 To disable the ability for users to quit the monitor:
 ```json
 "allow_user_quit": false
+```
+
+### Installation
+
+You can run Paste with Peace by double-clicking the `PasteWithPeace.exe` file.
+
+No Python installation required.
+
+To configure options, edit the `config.json` in the same folder.
