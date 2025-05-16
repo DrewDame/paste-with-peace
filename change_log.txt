@@ -8,4 +8,17 @@
 - Added Shannon entropy fallback if no pattern matches
 - Confirmed 14 tests. Most tests that initially failed were written wrong. 
     generic_api_key condition in scanner.py was adjusted after test failure, successfully
-- 
+- main branch was merged to state of features branch and pushed to remote repo
+
+### [2025-05-15] features branch
+- UPDATED: paste_with_peace/monitor.py
+    start_monitor(interval: float = 0.5):
+    scan_clipboard_text(text: str) -> bool:
+- UPDATED: paste_with_peace/notifier.py
+    alert_secret_detected(label: str, _text: str):
+- UPDATED: tests/test_monitor.py
+    13 tests implemented and passed
+- Goal: Monitor clipboard for new content and scan it using scanner.py
+- Plan: Poll clipboard every 0.5s, detect new text, trigger alert via notifier.py
+- Confirmed 13 tests. All tests passed on first try after minor syntax corrections
+- main branch was merged to state of features branch and pushed to remote repo
