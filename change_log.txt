@@ -43,3 +43,18 @@
 - Confirmed function with manual testing by running main.py and copying an
   example key to my clipboard
 - main branch was merged to state of features branch and pushed to remote repo
+
+### [2025-05-15] features branch -> main branch
+- UPDATED: config.json
+- UPDATED: paste_with_peace/notifier.py
+    log_detection(label: str, text: str, log_file="logs/detection_log.txt", redact_mode="masked"):
+- UPDATED: paste_with_peace/config.py
+    load_config(path="config.json"):
+- Goal: Add the ability to change settings
+- Plan: Change settings with config.json and load with config.py. There
+  is currently no UI to change contents of config.json
+- Confirmed function with manual testing by running main.py and copying an
+  example key to my clipboard, with config.json "logging_enabled" set
+  first to true, then to false. logs/detection_log.txt was only 
+  updated when "logging_enabled" was set to true
+- main branch was merged to state of features branch and pushed to remote repo
