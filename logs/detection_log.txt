@@ -37,3 +37,9 @@
 2025-05-16T15:12:06 | OpenAI Key | sk-ab**********67890
 2025-05-16T15:12:07 | OpenAI Key | sk-ab**********67890
 2025-05-16T15:12:08 | OpenAI Key | sk-ab**********67890
+2025-05-17T12:37:53 | No pattern match, but High Shannon Entropy found | def r**********n()
+
+2025-05-17T14:04:35 | No pattern match, but High Shannon Entropy found | from **********ce'),
+2025-05-17T14:09:23 | No pattern match, but High Shannon Entropy found | def r**********roy()
+2025-05-17T14:12:05 | No pattern match, but High Shannon Entropy found | def r**********roy()
+2025-05-17T14:25:50 | No pattern match, but High Shannon Entropy found | def g**********son")

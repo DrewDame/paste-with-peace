@@ -1,0 +1,8 @@
+{
+    "allow_user_quit": true,
+    "popup_timeout": 5,
+    "clear_after_paste": true,
+    "logging_enabled": true,
+    "redact_mode": "Masked",
+    "log_file_path": "logs/detection_log.txt"
+}

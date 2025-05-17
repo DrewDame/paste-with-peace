@@ -166,3 +166,20 @@
   and apps pages
 - Cannot yet confirm function because I haven't been opening the system
   GUI from the system tray. See next feature commit for function confirmation
+- main branch was merged to state of features branch and pushed to remote repo  
+
+### [2025-05-17] features branch -> main branch
+- UPDATED: paste_with_peace/settings_ui.py
+- UPDATED: paste_with_peace/tray.py
+- UPDATED: paste_with_peace/config.py
+- UPDATED: paste_with_peace/main.py
+- Goal: Be able to open settings from the system tray icon and restart program
+  to save settings
+- Plan: Build the exe file with pyinstaller and run the exe file to test
+  if the restart button works
+- Confirmed function after lots of bugfixing by clicking the restart button
+  and observing that the system tray icon disappears and reappears after 
+  clicking the restart button, with the updated "allow_user_quit" setting
+- This one took a very long time to make work. Not completely sure why what
+  works, works.
+- main branch was merged to state of features branch and pushed to remote repo

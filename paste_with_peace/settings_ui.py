@@ -1,29 +1,18 @@
 import customtkinter as ctk
 import json
-import os
 import sys
 from CTkMessagebox import CTkMessagebox
+from paste_with_peace.config import load_config, save_config, get_config_path
 
-CONFIG_PATH = 'config.json'
 ctk.set_appearance_mode("System")
 ctk.set_default_color_theme('blue')
-
-def load_config():
-    """Loads and returns config file. Returns empty json if config file not found"""
-    if os.path.exists(CONFIG_PATH):
-        with open(CONFIG_PATH, "r") as f:
-            return json.load(f)
-    print(f"Could not find config file at {CONFIG_PATH}", file=sys.stderr)
-    return {}
 
 class SettingsApp(ctk.CTk):
     def __init__(self):
         super().__init__()
         self.title("Paste with Peace")
-        self.geometry("1000x700")  # Fixed typo
-        self.resizable(True, True)  # Fixed typo
-
-        # Layout: Sidebar left, content right
+        self.geometry("1000x700")
+        self.resizable(True, True)
 
         self.grid_columnconfigure(1, weight=1)
         self.grid_rowconfigure(0, weight=1)
@@ -60,11 +49,11 @@ class SettingsApp(ctk.CTk):
 
         if name == "Settings":
             self.build_settings_page()
-        if name == "Apps":
+        elif name == "Apps":
             self.build_apps_page()
         else:
             ctk.CTkLabel(self.main_frame, text=f"{name} Page", font=ctk.CTkFont(size=18)).pack(pady=30)
-    
+
     def build_settings_page(self):
         config = load_config()
 
@@ -94,7 +83,7 @@ class SettingsApp(ctk.CTk):
             )
             row += 1
 
-         # --- System Tray ---
+        # --- System Tray ---
         section_header("System Tray")
         self.allow_user_quit_var = ctk.StringVar(value="Enabled" if config.get("allow_user_quit", True) else "Disabled")
         allow_quit_menu = ctk.CTkOptionMenu(content, variable=self.allow_user_quit_var, values=["Enabled", "Disabled"])
@@ -169,11 +158,11 @@ class SettingsApp(ctk.CTk):
 
         # Save button
         def save_apps():
-            config["enabled_apps"] = {
-                "slack": self.slack_enabled_var.get() == "Enabled"
-            }
-            with open(CONFIG_PATH, "w") as f:
-                json.dump(config, f, indent=4)
+            config = load_config()
+            enabled_apps = config.get("enabled_apps", {})
+            enabled_apps["slack"] = self.slack_enabled_var.get() == "Enabled"
+            config["enabled_apps"] = enabled_apps
+            save_config(config)
             CTkMessagebox(
                 title="Saved",
                 message="Settings saved successfully.\nRestart the app to apply all changes.",
@@ -190,27 +179,26 @@ class SettingsApp(ctk.CTk):
         ).pack(pady=(0,5))
 
     def save_settings(self):
-        """Adds save button functionality so that the settings page will actually change config.json"""
+        """Save the settings page changes to config.json, preserving other keys."""
         try:
             timeout_ms = int(self.popup_timeout_var.get())
             if not (0 <= timeout_ms <= 50000):
-                raise ValueError("Popup timeout must be between 0 and 50000.")
+                raise ValueError("Popup timeout must be between 0 and 50,000.")
             timeout_sec = timeout_ms // 1000
         except ValueError:
             CTkMessagebox(title="Error", message="Invalid popup timeout value. Must be between 0 and 50,000 milliseconds", icon="cancel")
             return
-            
-        updated_config = {
+
+        config = load_config()
+        config.update({
             "allow_user_quit": self.allow_user_quit_var.get() == "Enabled",
             "popup_timeout": timeout_sec,
             "clear_after_paste": self.clear_after_paste_var.get() == "Enabled",
             "logging_enabled": self.logging_enabled_var.get() == "Enabled",
-            "redact_mode": self.redact_mode_var.get(),
+            "redact_mode": self.redact_mode_var.get().lower(),
             "log_file_path": self.log_file_path_var.get()
-        }
-
-        with open(CONFIG_PATH, "w") as f:
-            json.dump(updated_config, f, indent=4)
+        })
+        save_config(config)
 
         CTkMessagebox(
             title="Saved",
@@ -219,9 +207,14 @@ class SettingsApp(ctk.CTk):
         )
 
     def restart_app(self):
-        import sys, subprocess, os
-        subprocess.Popen([sys.executable, os.path.join(os.path.dirname(__file__), "main.py")])
-        self.destroy()        
+        import subprocess, os, sys
+        flag_path = os.path.join(os.path.dirname(get_config_path()), "restart.flag")
+        with open(flag_path, "w") as f:
+            f.write("restart requested")
+        exe_path = sys.executable
+        subprocess.Popen([exe_path])
+        self.destroy()
+        os._exit(0)  # Immediately terminate the entire process
 
 def launch_settings_ui():
     app = SettingsApp()
