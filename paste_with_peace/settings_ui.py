@@ -60,6 +60,8 @@ class SettingsApp(ctk.CTk):
 
         if name == "Settings":
             self.build_settings_page()
+        if name == "Apps":
+            self.build_apps_page()
         else:
             ctk.CTkLabel(self.main_frame, text=f"{name} Page", font=ctk.CTkFont(size=18)).pack(pady=30)
     
@@ -130,6 +132,45 @@ class SettingsApp(ctk.CTk):
             command=self.save_settings
         ).pack(pady=15)
 
+    def build_apps_page(self):
+        config = load_config()
+        enabled_apps = config.get("enabled_apps", {})
+        slack_enabled = enabled_apps.get("slack", True)
+
+        content = ctk.CTkFrame(self.main_frame)
+        content.pack(fill="both", expand=True, padx=10, pady=10)
+        content.grid_columnconfigure(1, weight=1)
+
+        font_title = ctk.CTkFont(size=14, weight="bold")
+        font_desc = ctk.CTkFont(size=11)
+
+        row = 0
+        def setting(label, desc, widget):
+            nonlocal row
+            ctk.CTkLabel(content, text=label, font=font_title).grid(row=row, column=0, sticky="w", padx=(0, 10))
+            widget.grid(row=row, column=1, sticky="ew")
+            row += 1
+            ctk.CTkLabel(content, text=desc, font=font_desc, text_color="gray").grid(
+                row=row, column=0, columnspan=2, sticky="w", padx=(0, 10), pady=(0, 5)
+            )
+            row += 1
+
+        # Slack toggle
+        self.slack_enabled_var = ctk.StringVar(value="Enabled" if slack_enabled else "Disabled")
+        slack_menu = ctk.CTkOptionMenu(content, variable=self.slack_enabled_var, values=["Enabled", "Disabled"])
+        setting("Slack", "Enable or disable clipboard detection and blocking in Slack Desktop.", slack_menu)
+
+        # Save button
+        def save_apps():
+            config["enabled_apps"] = {
+                "slack": self.slack_enabled_var.get() == "Enabled"
+            }
+            with open(CONFIG_PATH, "w") as f:
+                json.dump(config, f, indent=4)
+            CTkMessagebox(title="Saved", message="App settings saved successfully.", icon="check")
+
+        ctk.CTkButton(content, text="Save App Settings", command=save_apps).grid(row=row, column=0, columnspan=2, pady=15)
+
     def save_settings(self):
         """Adds save button functionality so that the settings page will actually change config.json"""
         try:
@@ -154,6 +195,7 @@ class SettingsApp(ctk.CTk):
             json.dump(updated_config, f, indent=4)
 
         CTkMessagebox(title="Success", message="Settings saved successfully.", icon="check")
+        
 
 def launch_settings_ui():
     app = SettingsApp()

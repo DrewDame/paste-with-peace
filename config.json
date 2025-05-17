@@ -7,5 +7,9 @@
     
     "logging_enabled": true,
     "redact_mode": "Masked",
-    "log_file_path": "logs/detection_log.txt"
+    "log_file_path": "logs/detection_log.txt",
+    
+    "enabled_apps": {
+        "slack": true
+    }
 }
