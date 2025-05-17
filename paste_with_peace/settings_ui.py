@@ -2,6 +2,7 @@ import customtkinter as ctk
 import json
 import os
 import sys
+from CTkMessagebox import CTkMessagebox
 
 CONFIG_PATH = 'config.json'
 ctk.set_appearance_mode("System")
@@ -19,7 +20,7 @@ class SettingsApp(ctk.CTk):
     def __init__(self):
         super().__init__()
         self.title("Paste with Peace")
-        self.geometry("700x450")  # Fixed typo
+        self.geometry("1000x700")  # Fixed typo
         self.resizable(True, True)  # Fixed typo
 
         # Layout: Sidebar left, content right
@@ -99,9 +100,9 @@ class SettingsApp(ctk.CTk):
 
         # --- Popups ---
         section_header("Popups")
-        self.popup_timeout_var = ctk.StringVar(value=str(config.get("popup_timeout", 5000)))
+        self.popup_timeout_var = ctk.StringVar(value=str(config.get("popup_timeout", 5) * 1000))
         popup_entry = ctk.CTkEntry(content, textvariable=self.popup_timeout_var, placeholder_text="5000")
-        setting("Popup Timeout", "How long popups stay on screen (in milliseconds, 0 to 50000).", popup_entry)
+        setting("Popup Timeout", "How long popups stay on screen (in milliseconds, 0 to 50,000).", popup_entry)
 
         # --- App Behavior ---
         section_header("App Behavior")
@@ -115,13 +116,44 @@ class SettingsApp(ctk.CTk):
         logging_menu = ctk.CTkOptionMenu(content, variable=self.logging_enabled_var, values=["Enabled", "Disabled"])
         setting("Enable Logging", "Save detection events to a local log file.", logging_menu)
 
-        self.redact_mode_var = ctk.StringVar(value=config.get("redact_mode", "Masked"))
+        self.redact_mode_var = ctk.StringVar(value=config.get("redact_mode", "Masked").capitalize())
         redact_menu = ctk.CTkOptionMenu(content, variable=self.redact_mode_var, values=["Masked", "Hash", "Unchanged", "Redacted"])
         setting("Redact Mode", "How secrets appear in logs: Masked, Hashed, Plain, or Redacted.", redact_menu)
 
         self.log_file_path_var = ctk.StringVar(value=config.get("log_file_path", "logs/detection_log.txt"))
         log_path_entry = ctk.CTkEntry(content, textvariable=self.log_file_path_var, placeholder_text="logs/detection_log.txt")
         setting("Log File Path", "Where to save logs if logging is enabled.", log_path_entry)
+
+        ctk.CTkButton(
+            self.main_frame,
+            text="Save Settings",
+            command=self.save_settings
+        ).pack(pady=15)
+
+    def save_settings(self):
+        """Adds save button functionality so that the settings page will actually change config.json"""
+        try:
+            timeout_ms = int(self.popup_timeout_var.get())
+            if not (0 <= timeout_ms <= 50000):
+                raise ValueError("Popup timeout must be between 0 and 50000.")
+            timeout_sec = timeout_ms // 1000
+        except ValueError:
+            CTkMessagebox(title="Error", message="Invalid popup timeout value. Must be between 0 and 50,000 milliseconds", icon="cancel")
+            return
+            
+        updated_config = {
+            "allow_user_quit": self.allow_user_quit_var.get() == "Enabled",
+            "popup_timeout": timeout_sec,
+            "clear_after_paste": self.clear_after_paste_var.get() == "Enabled",
+            "logging_enabled": self.logging_enabled_var.get() == "Enabled",
+            "redact_mode": self.redact_mode_var.get(),
+            "log_file_path": self.log_file_path_var.get()
+        }
+
+        with open(CONFIG_PATH, "w") as f:
+            json.dump(updated_config, f, indent=4)
+
+        CTkMessagebox(title="Success", message="Settings saved successfully.", icon="check")
 
 def launch_settings_ui():
     app = SettingsApp()

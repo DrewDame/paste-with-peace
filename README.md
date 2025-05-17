@@ -75,3 +75,18 @@ To launch the UI:
 ```bash
 python -m paste_with_peace.settings_ui
 ```
+
+### 💾 Save Config Changes from the Settings UI
+
+The graphical Settings interface now allows you to edit and **save changes directly to `config.json`**.
+
+#### How it works:
+- Update any of the dropdowns or text fields
+- Click the **"Save Settings"** button at the bottom of the page
+- Settings will be validated and saved to your local `config.json`
+
+#### Notes:
+- `Popup Timeout` must be an integer between **0** and **50000** (in milliseconds)
+- Settings persist between sessions — they are read on app startup
+
+✅ All settings changes made through the UI are immediately written to disk.

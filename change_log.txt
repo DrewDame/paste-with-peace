@@ -134,3 +134,14 @@
 - Confirmed function by running the settings_ui.py file and observing
   that the GUI opened on the Settings page with options to change settings
 - main branch was merged to state of features branch and pushed to remote repo
+
+### [2025-05-16] features branch -> main branch
+- UPDATED: paste_with_peace/settings_ui.py
+    save_settings(self):
+- Goal: Add save functionality and butotn to the settings page so that
+  changes to the settings can be saved
+- Plan: Use custom tkinter to create the save button
+- Confirmed function by running the settings_ui.py file and observing that
+  changing settings in the GUI and pressing save resulted in a change to
+  the contents of config.json
+- main branch was merged to state of features branch and pushed to remote repo
