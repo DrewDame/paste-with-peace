@@ -132,6 +132,13 @@ class SettingsApp(ctk.CTk):
             command=self.save_settings
         ).pack(pady=15)
 
+        ctk.CTkButton(
+            self.main_frame,
+            text="Restart App",
+            fg_color="gray30",
+            command=self.restart_app
+        ).pack(pady=(0,5))
+
     def build_apps_page(self):
         config = load_config()
         enabled_apps = config.get("enabled_apps", {})
@@ -167,9 +174,20 @@ class SettingsApp(ctk.CTk):
             }
             with open(CONFIG_PATH, "w") as f:
                 json.dump(config, f, indent=4)
-            CTkMessagebox(title="Saved", message="App settings saved successfully.", icon="check")
+            CTkMessagebox(
+                title="Saved",
+                message="Settings saved successfully.\nRestart the app to apply all changes.",
+                icon="check"
+            )
 
         ctk.CTkButton(content, text="Save App Settings", command=save_apps).grid(row=row, column=0, columnspan=2, pady=15)
+
+        ctk.CTkButton(
+            self.main_frame,
+            text="Restart App",
+            fg_color="gray30",
+            command=self.restart_app
+        ).pack(pady=(0,5))
 
     def save_settings(self):
         """Adds save button functionality so that the settings page will actually change config.json"""
@@ -194,8 +212,16 @@ class SettingsApp(ctk.CTk):
         with open(CONFIG_PATH, "w") as f:
             json.dump(updated_config, f, indent=4)
 
-        CTkMessagebox(title="Success", message="Settings saved successfully.", icon="check")
-        
+        CTkMessagebox(
+            title="Saved",
+            message="Settings saved successfully.\nRestart the app to apply all changes.",
+            icon="check"
+        )
+
+    def restart_app(self):
+        import sys, subprocess, os
+        subprocess.Popen([sys.executable, os.path.join(os.path.dirname(__file__), "main.py")])
+        self.destroy()        
 
 def launch_settings_ui():
     app = SettingsApp()

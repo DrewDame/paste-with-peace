@@ -146,7 +146,7 @@
   the contents of config.json
 - main branch was merged to state of features branch and pushed to remote repo
 
-### [2025-05-16] features branch -> main branch
+### [2025-05-17] features branch -> main branch
 - UPDATED: paste_with_peace/settings_ui.py
     build_apps_page(self):
 - Goal: Add apps page that allows users to turn on/off what apps are protected
@@ -154,3 +154,15 @@
 - Confirmed function by running the settings_ui.py file and observing that
   clicking on Apps in the sidebar opens the Apps page
 - main branch was merged to state of features branch and pushed to remote repo
+
+### [2025-05-17] features branch -> main branch
+- UPDATED: paste_with_peace/settings_ui.py
+    build_settings_page(self):
+    build_apps_page(self):
+- UPDATED: main.py
+- Goal: Add a restart button so that the program can be restarted for
+  settings to be applied
+- Plan: Use custom tkinter to add a restart button to the bottom of the settings
+  and apps pages
+- Cannot yet confirm function because I haven't been opening the system
+  GUI from the system tray. See next feature commit for function confirmation
