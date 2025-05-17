@@ -150,7 +150,7 @@
 - UPDATED: paste_with_peace/settings_ui.py
     build_apps_page(self):
 - Goal: Add apps page that allows users to turn on/off what apps are protected
-- Plan: Use custom tkinter to create the apps page
+- Plan: Use custom tkinter to create the apps page that changes config.json
 - Confirmed function by running the settings_ui.py file and observing that
   clicking on Apps in the sidebar opens the Apps page
 - main branch was merged to state of features branch and pushed to remote repo
