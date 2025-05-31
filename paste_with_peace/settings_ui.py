@@ -30,6 +30,10 @@ class SettingsApp(ctk.CTk):
         # Start thread to monitor for quit.flag (so settings UI closes if tray quits)
         threading.Thread(target=self.monitor_quit_flag, daemon=True).start()
 
+    def open_url(self, url):
+        import webbrowser
+        webbrowser.open(url)
+    
     def monitor_quit_flag(self):
         flag_path = os.path.join(os.path.dirname(get_config_path()), "quit.flag")
         while True:
@@ -69,6 +73,8 @@ class SettingsApp(ctk.CTk):
             self.build_settings_page()
         elif name == "Apps":
             self.build_apps_page()
+        elif name == "About":
+            self.build_about_page()
         else:
             ctk.CTkLabel(self.main_frame, text=f"{name} Page", font=ctk.CTkFont(size=18)).pack(pady=30)
 
@@ -195,6 +201,39 @@ class SettingsApp(ctk.CTk):
             fg_color="gray30",
             command=self.restart_app
         ).pack(pady=(0,5))
+
+    def build_about_page(self):
+        content = ctk.CTkFrame(self.main_frame)
+        content.pack(fill="both", expand=True, padx=10, pady=10)
+        content.grid_columnconfigure(0, weight=1)
+
+        ctk.CTkLabel(
+            content,
+            text="🛡️ Paste With Peace 🛡️",
+            font=ctk.CTkFont(size=18, weight="bold")
+        ).pack(pady=(10, 5))
+
+        ctk.CTkLabel(
+            content,
+            text="A lightweight tool to help prevent credential leaks before they happen.",
+            font=ctk.CTkFont(size=13),
+            text_color="white"
+        ).pack(pady=(0, 20))
+
+        def link_label(text, url):
+            label = ctk.CTkLabel(
+                content,
+                text=text,
+                font=ctk.CTkFont(size=13, underline=True),
+                text_color="white",
+                cursor="hand2"
+            )
+            label.pack(pady=4)
+            label.bind("<Button-1>", lambda e: self.open_url(url))
+
+        link_label("🔗 LinkedIn post", "https://www.linkedin.com/in/YOUR_USERNAME/posts/POST_ID")
+        link_label("📂 GitHub project repo", "https://github.com/YOUR_USERNAME/paste-with-peace")
+        link_label("👤 My GitHub profile", "https://github.com/YOUR_USERNAME")
 
     def save_settings(self):
         """Save the settings page changes to config.json, preserving other keys."""
