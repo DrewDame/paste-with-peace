@@ -9,6 +9,7 @@ from paste_with_peace.intercept.slack_guard import run_slack_guard
 from paste_with_peace import settings_ui
 
 def monitor_restart_flag():
+    print("monitor_restart_flag running")
     flag_path = os.path.join(os.path.dirname(get_config_path()), "restart.flag")
     while True:
         if os.path.exists(flag_path):
@@ -25,8 +26,8 @@ if __name__ == "__main__":
     # Start the restart flag monitor in the background
     Thread(target=monitor_restart_flag, daemon=True).start()
 
-    # If launched with --settings, open only the settings GUI
-    if "--settings" in sys.argv:
+    # If launched with the settings environment variable, open only the settings GUI
+    if os.environ.get("PWP_SETTINGS") == "1":
         settings_ui.SettingsApp().mainloop()
     else:
         config = load_config()

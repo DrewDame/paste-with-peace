@@ -66,17 +66,19 @@ def unblock_enter_after_delay(delay=2.0):
 def on_v(e):
     """If important information was just pasted, block enter key for 2 seconds"""
     # ctrl is not registered as a normal key so we must check it differently
+    print("on v")
     if keyboard.is_pressed('ctrl') and is_slack_active_window():
+        print("on v, inside")
         detected, label, text = clipboard_has_secret()
         if detected:
             notifier.alert_secret_detected(label, text)
             block_enter_temporarily()
             unblock_enter_after_delay(delay=2.0)
         if config.get('clear_after_paste', False):
-
             delete_pasted_content()
 
 def run_slack_guard():
+    print("running")
     """Detects that user just tried to paste sensitive information and prevents them from hitting enter key"""
     keyboard.on_press_key("v", on_v, suppress=False)
     while True:

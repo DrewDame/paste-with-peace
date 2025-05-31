@@ -43,3 +43,80 @@
 2025-05-17T14:09:23 | No pattern match, but High Shannon Entropy found | def r**********roy()
 2025-05-17T14:12:05 | No pattern match, but High Shannon Entropy found | def r**********roy()
 2025-05-17T14:25:50 | No pattern match, but High Shannon Entropy found | def g**********son")
+2025-05-22T23:13:39 | OpenAI Key | sk-ab**********890
+
+2025-05-22T23:13:51 | OpenAI Key | sk-ab**********890
+
+2025-05-22T23:19:33 | OpenAI Key | sk-ab**********890
+
+2025-05-22T23:20:43 | OpenAI Key | sk-ab**********890
+
+2025-05-22T23:23:02 | OpenAI Key | sk-ab**********890
+
+2025-05-22T23:29:06 | No pattern match, but High Shannon Entropy found | exe_p**********=env)
+2025-05-22T23:29:20 | No pattern match, but High Shannon Entropy found | if __**********ray()
+2025-05-22T23:29:37 | No pattern match, but High Shannon Entropy found | if __**********ray()
+2025-05-22T23:31:03 | No pattern match, but High Shannon Entropy found | if __**********ray()
+2025-05-22T23:31:35 | No pattern match, but High Shannon Entropy found | Pytho**********
+>>> 
+2025-05-22T23:34:44 | No pattern match, but High Shannon Entropy found | def o**********=env)
+2025-05-22T23:34:54 | No pattern match, but High Shannon Entropy found | def o**********=env)
+2025-05-22T23:35:12 | No pattern match, but High Shannon Entropy found | def o**********=env)
+2025-05-22T23:35:58 | No pattern match, but High Shannon Entropy found | def o**********=env)
+2025-05-22T23:38:20 | No pattern match, but High Shannon Entropy found | def o**********=env)
+2025-05-22T23:38:27 | OpenAI Key | sk-ab**********67890
+2025-05-22T23:38:27 | OpenAI Key | sk-ab**********67890
+2025-05-22T23:38:31 | OpenAI Key | sk-ab**********67890
+2025-05-22T23:39:04 | OpenAI Key | sk-ab**********67890
+2025-05-22T23:39:08 | OpenAI Key | sk-ab**********67890
+2025-05-30T22:38:39 | No pattern match, but High Shannon Entropy found | def r**********ocess
+2025-05-30T22:42:06 | OpenAI Key | sk-ab**********890
+
+2025-05-30T22:42:07 | OpenAI Key | sk-ab**********890
+
+2025-05-30T22:42:08 | OpenAI Key | sk-ab**********890
+
+2025-05-30T22:42:11 | OpenAI Key | sk-ab**********890
+
+2025-05-30T22:45:00 | OpenAI Key | sk-ab**********
+
+
+
+2025-05-30T22:45:01 | OpenAI Key | sk-ab**********
+
+
+
+2025-05-30T22:45:52 | OpenAI Key | sk-ab**********
+
+
+
+2025-05-30T22:47:14 | OpenAI Key | sk-ab**********
+
+
+
+2025-05-30T22:51:50 | No pattern match, but High Shannon Entropy found | def r**********it(0)
+2025-05-30T22:52:02 | No pattern match, but High Shannon Entropy found | def r**********it(0)
+2025-05-30T22:52:16 | OpenAI Key | sk-ab**********67890
+2025-05-30T22:52:17 | OpenAI Key | sk-ab**********67890
+2025-05-30T22:52:32 | OpenAI Key | sk-ab**********67890
+2025-05-30T22:52:33 | OpenAI Key | sk-ab**********67890
+2025-05-30T22:52:40 | OpenAI Key | sk-ab**********67890
+2025-05-30T22:52:54 | OpenAI Key | sk-ab**********67890
+2025-05-30T22:52:55 | OpenAI Key | sk-ab**********67890
+2025-05-30T23:09:26 | OpenAI Key | sk-ab**********890
+
+2025-05-30T23:14:03 | OpenAI Key | sk-ab**********890
+
+2025-05-30T23:39:36 | OpenAI Key | sk-ab**********67890
+2025-05-30T23:41:31 | OpenAI Key | sk-ab**********67890
+2025-05-30T23:41:32 | OpenAI Key | sk-ab**********67890
+2025-05-30T23:45:04 | No pattern match, but High Shannon Entropy found | class**********art()
+2025-05-30T23:45:14 | No pattern match, but High Shannon Entropy found | class**********art()
+2025-05-30T23:46:20 | No pattern match, but High Shannon Entropy found | def m**********ep(1)
+2025-05-30T23:48:52 | OpenAI Key | sk-ab**********67890
+2025-05-30T23:48:53 | OpenAI Key | sk-ab**********67890
+2025-05-30T23:49:00 | OpenAI Key | sk-ab**********67890
+2025-05-30T23:49:01 | OpenAI Key | sk-ab**********67890
+2025-05-30T23:49:02 | OpenAI Key | sk-ab**********67890
+2025-05-30T23:49:02 | OpenAI Key | sk-ab**********67890
+2025-05-30T23:49:19 | OpenAI Key | sk-ab**********67890

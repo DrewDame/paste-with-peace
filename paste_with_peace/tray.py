@@ -1,8 +1,9 @@
 import pystray
 from PIL import Image, ImageDraw
-from paste_with_peace.config import load_config
+from paste_with_peace.config import load_config, get_config_path
 import sys
 import subprocess
+import os
 
 # placeholder for the system tray icon. will be replaced with custom
 # pixel art later
@@ -19,10 +20,21 @@ def run_tray(on_quit_callback=None):
     config = load_config()  # <-- Always load fresh config when tray starts
 
     def open_settings_gui(icon, item):
-        exe_path = sys.executable
-        subprocess.Popen([exe_path, "--settings"])
+        env = os.environ.copy()
+        env["PWP_SETTINGS"] = "1"
+        if getattr(sys, 'frozen', False):
+            # Running as exe
+            exe_path = sys.executable
+            subprocess.Popen([exe_path], env=env)
+        else:
+            # Running from source
+            subprocess.Popen([sys.executable, os.path.abspath("main.py")], env=env)
 
     def quit_action(icon, item):
+        # Signal settings UI to quit
+        flag_path = os.path.join(os.path.dirname(get_config_path()), "quit.flag")
+        with open(flag_path, "w") as f:
+            f.write("quit")
         icon.stop()
         if on_quit_callback:
             on_quit_callback()

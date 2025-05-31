@@ -1,6 +1,9 @@
 import customtkinter as ctk
 import json
 import sys
+import threading
+import time
+import os
 from CTkMessagebox import CTkMessagebox
 from paste_with_peace.config import load_config, save_config, get_config_path
 
@@ -10,6 +13,10 @@ ctk.set_default_color_theme('blue')
 class SettingsApp(ctk.CTk):
     def __init__(self):
         super().__init__()
+        # Remove quit.flag if it exists
+        flag_path = os.path.join(os.path.dirname(get_config_path()), "quit.flag")
+        if os.path.exists(flag_path):
+            os.remove(flag_path)
         self.title("Paste with Peace")
         self.geometry("1000x700")
         self.resizable(True, True)
@@ -19,6 +26,17 @@ class SettingsApp(ctk.CTk):
 
         self.create_sidebar()
         self.create_main_area()
+
+        # Start thread to monitor for quit.flag (so settings UI closes if tray quits)
+        threading.Thread(target=self.monitor_quit_flag, daemon=True).start()
+
+    def monitor_quit_flag(self):
+        flag_path = os.path.join(os.path.dirname(get_config_path()), "quit.flag")
+        while True:
+            if os.path.exists(flag_path):
+                self.after(0, self.destroy)  # <-- Schedule destroy on the main thread
+                break
+            time.sleep(1)
 
     def create_sidebar(self):
         self.sidebar = ctk.CTkFrame(self, width=160)
@@ -208,13 +226,24 @@ class SettingsApp(ctk.CTk):
 
     def restart_app(self):
         import subprocess, os, sys
+        from paste_with_peace.config import get_config_path
         flag_path = os.path.join(os.path.dirname(get_config_path()), "restart.flag")
         with open(flag_path, "w") as f:
             f.write("restart requested")
-        exe_path = sys.executable
-        subprocess.Popen([exe_path])
+        if getattr(sys, 'frozen', False):
+            # Running as exe
+            exe_path = sys.executable
+            # Launch with a clean environment (no PWP_SETTINGS)
+            clean_env = os.environ.copy()
+            clean_env.pop("PWP_SETTINGS", None)
+            subprocess.Popen([exe_path], env=clean_env)
+        else:
+            # Running from source
+            clean_env = os.environ.copy()
+            clean_env.pop("PWP_SETTINGS", None)
+            subprocess.Popen([sys.executable, os.path.abspath("main.py")], env=clean_env)
         self.destroy()
-        os._exit(0)  # Immediately terminate the entire process
+        os._exit(0)
 
 def launch_settings_ui():
     app = SettingsApp()

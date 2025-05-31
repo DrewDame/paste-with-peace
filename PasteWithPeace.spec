@@ -10,7 +10,20 @@ a = Analysis(
     pathex=['.'],
     binaries=[],
     datas=[('config.json', '.')],  # Optional: just copies it alongside exe
-    hiddenimports=collect_submodules('paste_with_peace'),
+    hiddenimports=collect_submodules('paste_with_peace') 
+        + collect_submodules('plyer.platforms')
+        + [
+        'pyperclip',
+        'plyer',
+        'pystray',
+        'Pillow',
+        'keyboard',
+        'pygetwindow',
+        'pywin32',
+        'pyautogui',
+        'customtkinter',
+        'CTkMessagebox',
+    ],
     hookspath=[],
     runtime_hooks=[],
     excludes=[],

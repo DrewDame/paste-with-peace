@@ -183,3 +183,19 @@
 - This one took a very long time to make work. Not completely sure why what
   works, works.
 - main branch was merged to state of features branch and pushed to remote repo
+
+### [2025-05-31] features branch -> main branch
+- UPDATED: paste_with_peace/notifier.py
+- UPDATED: paste_with_peace/settings_ui.py
+- UPDATED: paste_with_peace/tray.py
+- UPDATED: paste_with_peace/intercept/slack_guard.py
+- UPDATED: PasteWithPeace.spec
+- Goal: Make program completely functional other than About page in settings GUI
+- Plan: Bugfix until all practical use tests for the exe file as well as running 
+from the terminal work
+- Confirmed function by opening both the exe file and running from the terminal
+and verifying that all standard program features act as expected
+- This one took a while too. There were a lot of threading tweaks that had to be done,
+as well as imports that weren't automatically detected by pyinstaller and had to be added
+to the spec file
+- main branch was merged to state of features branch and pushed to remote repo
