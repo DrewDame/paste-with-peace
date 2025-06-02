@@ -123,3 +123,18 @@
 2025-05-31T12:26:10 | No pattern match, but High Shannon Entropy found |     d**********True)
 2025-05-31T12:27:08 | No pattern match, but High Shannon Entropy found |     d**********True)
 2025-05-31T12:29:47 | No pattern match, but High Shannon Entropy found | def b**********AME")
+2025-06-01T21:11:31 | OpenAI Key | sk-ab**********67890
+2025-06-01T21:11:49 | OpenAI Key | sk-ab**********67890
+2025-06-01T21:11:56 | OpenAI Key | sk-ab**********67890
+2025-06-01T21:12:27 | OpenAI Key | sk-ab**********67890
+2025-06-01T21:12:30 | OpenAI Key | sk-ab**********67890
+2025-06-01T21:12:31 | OpenAI Key | sk-ab**********67890
+2025-06-01T21:12:33 | OpenAI Key | sk-ab**********67890
+2025-06-01T21:12:33 | OpenAI Key | sk-ab**********67890
+2025-06-01T21:12:57 | OpenAI Key | sk-ab**********67890
+2025-06-01T21:13:09 | OpenAI Key | sk-ab**********67890
+2025-06-01T21:14:28 | OpenAI Key | sk-ab**********67890
+2025-06-01T21:14:49 | OpenAI Key | sk-ab**********67890
+2025-06-01T21:22:59 | OpenAI Key | hash=751da0d2100c8413bb2a75e87327144355cca63a7634fa28ec370a74b13a8c9b
+2025-06-01T21:37:09 | OpenAI Key | hash=751da0d2100c8413bb2a75e87327144355cca63a7634fa28ec370a74b13a8c9b
+2025-06-01T21:37:31 | OpenAI Key | hash=751da0d2100c8413bb2a75e87327144355cca63a7634fa28ec370a74b13a8c9b

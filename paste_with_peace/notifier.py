@@ -15,6 +15,7 @@ def log_detection(label: str, text: str, log_file="logs/detection_log.txt", reda
         return
     """Saves log of each time an alert is sent to logs/detection_log.txt"""
     clipped_text = ""
+    print(redact_mode)
     if redact_mode == "masked":
         clipped_text = text[:5] + "*" * 10 + text[-5:]
     elif redact_mode == "hash":
@@ -33,7 +34,9 @@ def log_detection(label: str, text: str, log_file="logs/detection_log.txt", reda
         f.write(f"{timestamp} | {label} | {clipped_text}\n")
 
 def alert_secret_detected(label: str, _text: str):
-    log_detection(label, _text)
+    config = load_config()
+    redact_mode = config.get("redact_mode", "masked")
+    log_detection(label, _text, redact_mode=redact_mode)
     title = "⚠️ Paste with Peace: Potential Secret Detected"
     message = (
         f"Type: {label}\n"
@@ -43,5 +46,5 @@ def alert_secret_detected(label: str, _text: str):
     notification.notify(
         title=title,
         message=message,
-        timeout=config["popup_timeout"]
+        timeout=config["popup_timeout"]  # Convert ms to seconds
     )

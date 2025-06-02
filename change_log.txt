@@ -208,3 +208,18 @@ about page
 - Confirmed function by opening settings GUI and observing that all links were
 present in the about page and functional
 - main branch was merged to state of features branch and pushed to remote repo
+
+### [2025-05-31] features branch -> main branch
+- UPDATED: paste_with_peace/notifier.py
+- UPDATED: README.md
+- Goal: Bugfix on logging for the logs/detection_log.txt file
+- Plan: Ensure that all functions in notifier.py are correctly accessing the
+config.json file
+- Confirmed function by testing full app while making full settings walkthrough
+and demo video
+- Goal: Finish README.md file to make project launch-ready
+- Plan: Updated README.md file using the Best_README template until done. Add embedded
+gif and mp4 files for easy project viewing
+- Confirmed function by runnign ctrl+shift+v version of README inside of VSCode and
+observing that it looked as intended
+- main branch was merged to state of features branch and pushed to remote repo
